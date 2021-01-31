@@ -17,6 +17,7 @@ public final class ConditionExtractor implements Condition.Extractor {
     public Collection<Condition> extractConditions(Object object) {
         SerializedObject serializedObject = serializer.serialize(object);
         return serializedObject.getData().entrySet().stream()
-                .map(e -> new Condition(e.getKey(), Operation.EQUALS,e.getValue())).collect(Collectors.toList());
+                .map(e -> Condition.fromEntry(e, Operation.EQUALS))
+                .collect(Collectors.toList());
     }
 }

@@ -4,6 +4,7 @@ import io.github.vshnv.form.query.Operation;
 import io.github.vshnv.form.serialization.Serializer;
 
 import java.util.Collection;
+import java.util.Map;
 
 public final class Condition {
     private final String field;
@@ -28,7 +29,11 @@ public final class Condition {
         return operand;
     }
 
-    public static Extractor createConditionExtractor(Serializer serializer) {
+    public static Condition fromEntry(Map.Entry<String, Object> entry, Operation operation) {
+        return new Condition(entry.getKey(), operation, entry.getValue());
+    }
+
+    public static Extractor extractor(Serializer serializer) {
         return new ConditionExtractor(serializer);
     }
     
