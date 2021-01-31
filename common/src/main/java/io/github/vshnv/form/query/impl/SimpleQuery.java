@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * {@inheritDoc}
+ */
 public class SimpleQuery implements Query {
     private final List<Condition> conditions;
 
@@ -26,6 +29,9 @@ public class SimpleQuery implements Query {
         this.conditions.remove(condition);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Collection<Condition> getConditions() {
         return conditions;

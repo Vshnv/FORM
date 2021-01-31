@@ -5,6 +5,9 @@ import io.github.vshnv.form.query.Query;
 
 import java.util.Collection;
 
+/**
+ * {@inheritDoc}
+ */
 public class ObjectQuery implements Query {
     private final Object object;
     private final Condition.Extractor extractor;
@@ -14,6 +17,9 @@ public class ObjectQuery implements Query {
         this.extractor = extractor;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Collection<Condition> getConditions() {
         return extractor.extractConditions(object);
