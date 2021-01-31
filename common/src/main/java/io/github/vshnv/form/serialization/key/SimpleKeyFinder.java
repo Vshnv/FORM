@@ -6,6 +6,9 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Optional;
 
+/**
+ * {@inheritDoc}
+ */
 public class SimpleKeyFinder implements KeyFinder {
     @Override
     public Optional<String> findPrimaryKey(Object obj) {

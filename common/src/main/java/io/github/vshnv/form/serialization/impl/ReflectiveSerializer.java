@@ -14,12 +14,18 @@ import java.util.logging.Logger;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+/**
+ * {@inheritDoc}
+ */
 public class ReflectiveSerializer implements Serializer {
     private final KeyFinder keyFinder;
     public ReflectiveSerializer(KeyFinder keyFinder) {
         this.keyFinder = keyFinder;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public SerializedObject serialize(Object obj) {
         Class<?> clazz = obj.getClass();

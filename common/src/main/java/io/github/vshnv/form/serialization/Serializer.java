@@ -1,5 +1,8 @@
 package io.github.vshnv.form.serialization;
 
+/**
+ * Converts an object to a {@link SerializedObject} based on annotation hints
+ */
 public interface Serializer {
     /**
      * Creates a internal serialized representation of the object

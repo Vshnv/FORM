@@ -7,8 +7,10 @@ import io.github.vshnv.form.serialization.key.KeyFinder;
 import io.github.vshnv.form.serialization.key.SimpleKeyFinder;
 
 import java.util.Map;
-import java.util.Optional;
 
+/**
+ * {@inheritDoc}
+ */
 public class GsonSerializer implements Serializer {
     private final Gson gson;
     private final KeyFinder keyFinder;
@@ -21,7 +23,9 @@ public class GsonSerializer implements Serializer {
         this.gson = gson;
         this.keyFinder = keyFinder;
     }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public SerializedObject serialize(Object obj) {
         Map<String, Object> map = gson.fromJson(gson.toJsonTree(obj), Map.class);
