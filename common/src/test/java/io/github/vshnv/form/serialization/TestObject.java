@@ -2,7 +2,18 @@ package io.github.vshnv.form.serialization;
 
 import io.github.vshnv.form.annotation.PrimaryKey;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TestObject {
+
+    static Map<String, Object> EXPECTED_MAP = new HashMap<>();
+    static {
+        EXPECTED_MAP.put("id", 15.0);
+        EXPECTED_MAP.put("name", "SerializationTest");
+        EXPECTED_MAP.put("age", 23.0);
+    }
+
     @PrimaryKey
     private final int id;
     private String name;
