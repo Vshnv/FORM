@@ -24,4 +24,9 @@ public class ObjectQuery implements Query {
     public Collection<Condition> getConditions() {
         return extractor.extractConditions(object);
     }
+
+    @Override
+    public boolean matches(Object obj) {
+        return false;
+    }
 }

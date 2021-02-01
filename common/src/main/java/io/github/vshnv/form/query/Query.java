@@ -12,4 +12,9 @@ public interface Query {
      * @return Collection of Conditions that specify the bounds of a query
      */
     Collection<Condition> getConditions();
+
+    /**
+     * @return true, if this query matches all conditions for this object
+     */
+    boolean matches(Object obj);
 }
