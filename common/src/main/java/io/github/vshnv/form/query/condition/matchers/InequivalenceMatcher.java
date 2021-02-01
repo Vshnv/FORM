@@ -1,9 +1,11 @@
-package io.github.vshnv.form.query.condition.matcher;
+package io.github.vshnv.form.query.condition.matchers;
 
 import java.lang.reflect.Field;
 import java.util.Optional;
 
-public class InEquivalentMatcher extends Matcher {
+public final class InequivalenceMatcher extends Matcher {
+
+
     @Override
     public boolean match(Object obj, Field f, Object operand) {
         Optional<Object> fieldObj = getFieldValue(f, obj);

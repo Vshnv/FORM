@@ -17,7 +17,6 @@ public class QueryTest extends TestCase {
                 new Condition("age", Operation.EQUALS, 15.0)
         );
 
-        a
         assertEquals(new SerializedObject("id", TestObject.EXPECTED_MAP), so);
     }
 
