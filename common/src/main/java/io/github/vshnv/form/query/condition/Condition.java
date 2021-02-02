@@ -45,6 +45,12 @@ public final class Condition {
         return operand;
     }
 
+    /**
+     * Tests if the condition is valid on the specific object
+     * @param obj Object to be tested
+     * @param serializer serializer to use to test
+     * @return true, if condition is valid for given object
+     */
     public boolean test(Object obj, Serializer serializer) {
         SerializedObject so = serializer.serialize(obj);
         Map<String, Object> data = so.getData();
