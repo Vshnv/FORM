@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 
 public class SerializerTest extends TestCase {
     public void testGsonSerializer() {
-        Serializer gsonSerializer = new GsonSerializer();
+        Serializer gsonSerializer = SerializerFactory.withGson().build();
         TestObject object = new TestObject(15, "SerializationTest", 23);
         SerializedObject so = gsonSerializer.serialize(object);
 
@@ -17,7 +17,7 @@ public class SerializerTest extends TestCase {
     }
 
     public void testReflectiveSerializer() {
-        Serializer reflectiveSerializer = new ReflectiveSerializer();
+        Serializer reflectiveSerializer = SerializerFactory.withReflection().build();
         TestObject object = new TestObject(15, "SerializationTest", 23);
         SerializedObject so = reflectiveSerializer.serialize(object);
 

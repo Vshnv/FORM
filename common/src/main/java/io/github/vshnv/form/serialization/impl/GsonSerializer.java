@@ -19,14 +19,6 @@ public class GsonSerializer implements Serializer {
     private final Gson gson;
     private final KeyFinder keyFinder;
 
-    public GsonSerializer() {
-        this(new Gson());
-    }
-
-    public GsonSerializer(Gson gson) {
-        this(gson, new SimpleKeyFinder());
-    }
-
     public GsonSerializer(Gson gson, KeyFinder keyFinder) {
         this.gson = gson;
         this.keyFinder = keyFinder;
