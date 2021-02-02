@@ -17,8 +17,14 @@ public enum Operation {
     BETWEEN(BetweenMatcher::new),
     LIKE(LikeMatcher::new),
     IN(InMatcher::new);
+
     private final Supplier<Matcher> matcherSupplier;
+
     Operation(Supplier<Matcher> matcherSupplier) {
         this.matcherSupplier = matcherSupplier;
+    }
+
+    public Supplier<Matcher> getMatcherSupplier() {
+        return matcherSupplier;
     }
 }

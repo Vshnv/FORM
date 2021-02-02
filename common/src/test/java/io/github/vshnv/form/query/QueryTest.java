@@ -14,10 +14,10 @@ public class QueryTest extends TestCase {
     public void testSimpleQuery() {
         Query query = new SimpleQuery(
                 new Condition("id", Operation.EQUALS, 15.0),
-                new Condition("age", Operation.EQUALS, 15.0)
+                new Condition("age", Operation.EQUALS, 23.0)
         );
 
-        assertEquals(new SerializedObject("id", TestObject.EXPECTED_MAP), so);
+        assertTrue(query.matches(new TestObject(15, "test", 23)));
     }
 
     public void testReflectiveSerializer() {

@@ -1,8 +1,10 @@
 package io.github.vshnv.form.query.condition;
 
+import io.github.vshnv.form.serialization.SerializedObject;
 import io.github.vshnv.form.serialization.Serializer;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
@@ -43,6 +45,14 @@ public final class Condition {
         return operand;
     }
 
+    public boolean test(Object obj, Serializer serializer) {
+        SerializedObject so = serializer.serialize(obj);
+        Map<String, Object> data = so.getData();
+        Object value = data.get(field);
+        if (value == null) return false;
+        return operation.getMatcherSupplier().get().match(value, operand);
+    }
+
     /**
      * Gets a Condition based of a map entry with the specified operation
      * @param entry the map entry from the field to the operand, i.e, {Field: Object}
@@ -71,5 +81,15 @@ public final class Condition {
          * @return collection of conditions representing given object
          */
         Collection<Condition> extractConditions(Object object);
+    }
+
+    private Optional<Object> getFieldValue(Field f, Object obj) {
+        f.setAccessible(true);
+        try {
+            return Optional.ofNullable(f.get(obj));
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 }

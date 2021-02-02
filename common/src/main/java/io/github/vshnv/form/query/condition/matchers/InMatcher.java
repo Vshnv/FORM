@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Optional;
 
-public class InMatcher extends Matcher {
+public final class InMatcher extends Matcher {
     @Override
     public boolean match(Object fieldObj, Object operand) {
         if (operand instanceof Collection) {

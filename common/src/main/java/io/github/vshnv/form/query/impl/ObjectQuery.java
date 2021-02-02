@@ -2,6 +2,8 @@ package io.github.vshnv.form.query.impl;
 
 import io.github.vshnv.form.query.condition.Condition;
 import io.github.vshnv.form.query.Query;
+import io.github.vshnv.form.serialization.Serializer;
+import io.github.vshnv.form.serialization.impl.GsonSerializer;
 
 import java.util.Collection;
 
@@ -11,10 +13,16 @@ import java.util.Collection;
 public class ObjectQuery implements Query {
     private final Object object;
     private final Condition.Extractor extractor;
+    private final Serializer serializer;
 
     public ObjectQuery(Object object, Condition.Extractor extractor) {
+        this(object, extractor, new GsonSerializer());
+    }
+
+    public ObjectQuery(Object object, Condition.Extractor extractor, Serializer serializer) {
         this.object = object;
         this.extractor = extractor;
+        this.serializer = serializer;
     }
 
     /**
@@ -27,6 +35,7 @@ public class ObjectQuery implements Query {
 
     @Override
     public boolean matches(Object obj) {
-        return false;
+
+        return getConditions().stream().allMatch(c -> c.test(obj, serializer));
     }
 }

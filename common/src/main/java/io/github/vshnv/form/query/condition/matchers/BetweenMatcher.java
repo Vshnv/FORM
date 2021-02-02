@@ -4,7 +4,7 @@ import io.github.vshnv.form.query.Range;
 
 import java.lang.reflect.Field;
 
-public class BetweenMatcher extends Matcher {
+public final class BetweenMatcher extends Matcher {
     @Override
     public boolean match(Object fieldObj, Object operand) {
         if (operand instanceof Range && fieldObj instanceof Number) {

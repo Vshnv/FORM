@@ -2,6 +2,8 @@ package io.github.vshnv.form.query.impl;
 
 import io.github.vshnv.form.query.condition.Condition;
 import io.github.vshnv.form.query.Query;
+import io.github.vshnv.form.serialization.Serializer;
+import io.github.vshnv.form.serialization.impl.GsonSerializer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,14 +14,20 @@ import java.util.List;
  * {@inheritDoc}
  */
 public class SimpleQuery implements Query {
-    private final List<Condition> conditions;
+    private final Collection<Condition> conditions;
+    private final Serializer serializer;
 
     public SimpleQuery(Condition... conditions) {
-        this.conditions = Arrays.asList(conditions);
+        this(Arrays.asList(conditions));
     }
 
-    public SimpleQuery(List<Condition> conditions) {
+    public SimpleQuery(Collection<Condition> conditions) {
+       this(conditions, new GsonSerializer());
+    }
+
+    public SimpleQuery(Collection<Condition> conditions, Serializer serializer) {
         this.conditions = new ArrayList<>(conditions);
+        this.serializer = serializer;
     }
 
     /**
@@ -32,6 +40,6 @@ public class SimpleQuery implements Query {
 
     @Override
     public boolean matches(Object obj) {
-        return false;
+        return getConditions().stream().allMatch(c -> c.test(obj, serializer));
     }
 }
