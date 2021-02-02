@@ -13,6 +13,7 @@ public abstract class Matcher {
         }
         return Optional.empty();
     }
-    public abstract boolean match(Object obj, Field f, Object operand);
+
+    public abstract boolean match(Object fieldObj, Object operand);
 
 }

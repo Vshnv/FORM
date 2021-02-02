@@ -6,14 +6,11 @@ import java.util.Optional;
 
 public class InMatcher extends Matcher {
     @Override
-    public boolean match(Object obj, Field f, Object operand) {
-        Optional<Object> fieldValueOptional = getFieldValue(f, obj);
-        if (!fieldValueOptional.isPresent()) return false;
-        Object value = fieldValueOptional.get();
+    public boolean match(Object fieldObj, Object operand) {
         if (operand instanceof Collection) {
-            return ((Collection<?>) operand).contains(value);
+            return ((Collection<?>) operand).contains(fieldObj);
         } else {
-            return operand.equals(value);
+            return operand.equals(fieldObj);
         }
     }
 }

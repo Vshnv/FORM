@@ -6,9 +6,9 @@ import java.lang.reflect.Field;
 
 public class BetweenMatcher extends Matcher {
     @Override
-    public boolean match(Object obj, Field f, Object operand) {
-        if (operand instanceof Range && obj instanceof Number) {
-            return ((Range<?>) operand).includes((Number) obj);
+    public boolean match(Object fieldObj, Object operand) {
+        if (operand instanceof Range && fieldObj instanceof Number) {
+            return ((Range<?>) operand).includes((Number) fieldObj);
         }
         return false;
     }

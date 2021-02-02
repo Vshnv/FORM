@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 public final class LesserMatcher extends ComparisionMatcher {
 
     @Override
-    public boolean match(Object obj, Field f, Object operand) {
-        int res = compare(obj, f, operand);
+    public boolean match(Object fieldObj, Object operand) {
+        int res = compare(fieldObj, operand);
         return res < 0;
     }
 }

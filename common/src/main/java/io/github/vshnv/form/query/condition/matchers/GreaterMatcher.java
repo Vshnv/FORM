@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 public final class GreaterMatcher extends ComparisionMatcher {
     @Override
     @SuppressWarnings({"rawtypes", "unchecked"})
-    public boolean match(Object obj, Field f, Object operand) throws ClassCastException {
-        int res = compare(obj, f, operand);
+    public boolean match(Object fieldObj, Object operand) throws ClassCastException {
+        int res = compare(fieldObj, operand);
         return res > 0;
     }
 }

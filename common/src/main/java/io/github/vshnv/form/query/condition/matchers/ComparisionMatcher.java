@@ -5,11 +5,8 @@ import java.util.Optional;
 
 abstract class ComparisionMatcher extends Matcher {
     @SuppressWarnings({"rawtypes", "unchecked"})
-    protected int compare(Object obj, Field f, Object operand) throws ClassCastException {
-        Optional<Object> fieldObj = getFieldValue(f, obj);
-        return fieldObj.map(o -> {
-            Comparable comparable = ((Comparable<?>) o);
-            return comparable.compareTo(operand);
-        }).orElse(0);
+    protected int compare(Object fieldObj, Object operand) throws ClassCastException {
+        Comparable comparable = ((Comparable<?>) fieldObj);
+        return comparable.compareTo(operand);
     }
 }
