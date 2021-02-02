@@ -27,7 +27,7 @@ public class QueryTest extends TestCase {
 
     public void testObjectSpecificQuery() {
         TestObject testObject = new TestObject(15, "test", 23);
-        Condition.Extractor extractor = new ConditionExtractor(SerializerFactory.withGson().build());
+        Condition.Extractor extractor = Condition.extractor(SerializerFactory.withGson().build());
         ObjectQuery query = new ObjectQuery(testObject, extractor);
         assertTrue(query.matches(new TestObject(15, "test", 23)));
     }

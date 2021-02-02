@@ -3,6 +3,7 @@ package io.github.vshnv.form.query.impl;
 import io.github.vshnv.form.query.condition.Condition;
 import io.github.vshnv.form.query.Query;
 import io.github.vshnv.form.serialization.Serializer;
+import io.github.vshnv.form.serialization.SerializerFactory;
 import io.github.vshnv.form.serialization.impl.GsonSerializer;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class SimpleQuery implements Query {
     }
 
     public SimpleQuery(Collection<Condition> conditions) {
-       this(conditions, new GsonSerializer());
+       this(conditions, SerializerFactory.withGson().build());
     }
 
     public SimpleQuery(Collection<Condition> conditions, Serializer serializer) {
