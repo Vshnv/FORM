@@ -1,3 +1,4 @@
 rootProject.name = 'FORM'
 include 'common'
+include 'json'
 

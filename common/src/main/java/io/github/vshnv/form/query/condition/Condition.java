@@ -3,12 +3,8 @@ package io.github.vshnv.form.query.condition;
 import io.github.vshnv.form.serialization.SerializedObject;
 import io.github.vshnv.form.serialization.Serializer;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Represents a specific condition bound
@@ -87,15 +83,5 @@ public final class Condition {
          * @return collection of conditions representing given object
          */
         Collection<Condition> extractConditions(Object object);
-    }
-
-    private Optional<Object> getFieldValue(Field f, Object obj) {
-        f.setAccessible(true);
-        try {
-            return Optional.ofNullable(f.get(obj));
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return Optional.empty();
     }
 }
