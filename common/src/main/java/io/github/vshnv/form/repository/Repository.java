@@ -1,4 +1,4 @@
-package io.github.vshnv.form;
+package io.github.vshnv.form.repository;
 
 import io.github.vshnv.form.query.Query;
 
